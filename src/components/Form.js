@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import { getYearDifference } from '../helper';
 
 const Field = styled.div`
     display: flex;
@@ -41,12 +42,83 @@ const Button = styled.button`
     }
 `;
 
+const Error = styled.div`
+    background-color: red;
+    color: #FFFFFF;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 2rem 0;
+`;
+
 const Form = () => {
+
+    const [data, setData] = useState({
+        origin: '',
+        year: '',
+        plan: ''
+    });
+
+    const [error, setError] = useState(false);
+
+    // extract values
+    const { origin, year, plan } = data;
+
+    // read the data of the form
+    const getInfo = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    // when the user press submit
+    const listInsurance = (e) => {
+        e.preventDefault();
+
+        if (origin.trim() === '' || year.trim() === '' || plan.trim() === '') {
+            setError(true);
+            return;
+        }
+
+        setError(false);
+
+        // base = 2000
+        let result = 2000;
+
+        // get the year difference
+        const difference = getYearDifference(year);
+        console.log(difference);
+
+        // per each year subtract 3%
+        result -= ((difference * 3) * result) / 100;
+        console.log(result);
+
+        // american 15%
+
+        // european 30%
+
+        // asiatic 5%
+
+        // basic plan increment 20%
+
+        // full plan increment 50%
+
+        // total
+    }
+
     return (
-        <form>
+        <form
+            onSubmit={listInsurance}
+        >
+            {error ? <Error>{'All fields are required'}</Error> : null}
             <Field>
                 <Label>Origin</Label>
-                <Select>
+                <Select
+                    name="origin"
+                    value={origin}
+                    onChange={getInfo}
+                >
                     <option value="">-- Select --</option>
                     <option value="american">American</option>
                     <option value="european">European</option>
@@ -55,7 +127,11 @@ const Form = () => {
             </Field>
             <Field>
                 <Label>Year</Label>
-                <Select>
+                <Select
+                    name="year"
+                    value={year}
+                    onChange={getInfo}
+                >
                     <option value="">-- Select --</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
@@ -75,14 +151,18 @@ const Form = () => {
                     type="radio"
                     name="plan"
                     value="basic"
+                    checked={plan === 'basic'}
+                    onChange={getInfo}
                 /> Basic
                 <Input
                     type="radio"
                     name="plan"
-                    value="complet"
-                /> Complet
+                    value="full"
+                    checked={plan === 'full'}
+                    onChange={getInfo}
+                /> Full
             </Field>
-            <Button type="button">List</Button>
+            <Button type="submit">List</Button>
         </form>
     );
 }
