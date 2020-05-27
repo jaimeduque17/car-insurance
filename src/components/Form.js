@@ -1,21 +1,62 @@
 import React from 'react';
+import styled from '@emotion/styled';
+
+const Field = styled.div`
+    display: flex;
+    margin: 1rem 0 0 0;
+    align-items: center;
+`;
+
+const Label = styled.label`
+    flex: 0 0 100px;
+`;
+
+const Select = styled.select`
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #e1e1e1;
+    -webkit-appearance: none;
+`;
+
+const Input = styled.input`
+    margin: 0 1rem;
+`;
+
+const Button = styled.button`
+    background-color: #00838F;
+    font-size: 16px;
+    width: 100%;
+    padding: 1rem;
+    margin: 2rem 0 0 0;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    transition: background-color .3s ease;
+
+    &:hover {
+        background-color: #26C6DA;
+        cursor: pointer;
+    }
+`;
 
 const Form = () => {
     return (
         <form>
-            <div>
-                <label>Origin</label>
-                <select>
-                    <option value="">--Select--</option>
+            <Field>
+                <Label>Origin</Label>
+                <Select>
+                    <option value="">-- Select --</option>
                     <option value="american">American</option>
                     <option value="european">European</option>
                     <option value="asiatic">Asiatic</option>
-                </select>
-            </div>
-            <div>
-                <label>Year</label>
-                <select>
-                    <option value="">--Select--</option>
+                </Select>
+            </Field>
+            <Field>
+                <Label>Year</Label>
+                <Select>
+                    <option value="">-- Select --</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
@@ -26,22 +67,22 @@ const Form = () => {
                     <option value="2014">2014</option>
                     <option value="2013">2013</option>
                     <option value="2012">2012</option>
-                </select>
-            </div>
-            <div>
-                <label>Plan</label>
-                <input
+                </Select>
+            </Field>
+            <Field>
+                <Label>Plan</Label>
+                <Input
                     type="radio"
                     name="plan"
                     value="basic"
                 /> Basic
-                <input
+                <Input
                     type="radio"
                     name="plan"
                     value="complet"
                 /> Complet
-            </div>
-            <button type="button">List</button>
+            </Field>
+            <Button type="button">List</Button>
         </form>
     );
 }
