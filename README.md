@@ -16,7 +16,7 @@ ReactJS Single Page App demo which has the following features:
 ## Getting Started and Installing
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* First Git clone the repo into your computer
+* First clone the repo into your computer
 ```
 git clone https://github.com/jaimeduque17/car-insurance.git
 ```
