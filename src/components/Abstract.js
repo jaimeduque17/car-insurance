@@ -1,22 +1,32 @@
 import React from 'react';
+import styled from '@emotion/styled';
+import { firstCapitalltter } from '../helper';
+
+const AbstractContainer = styled.div`
+    padding: 1rem;
+    text-align: center;
+    background-color: #00838F;
+    color: #FFFFFF;
+    margin: 1rem 0 0 0;
+`;
 
 const Abstract = ({ data }) => {
 
     // extract data
     const { origin, year, plan } = data;
-    
-    if(origin === '' || year === '' || plan === '') return null;
 
-    return ( 
-        <>
-        <h2>Abstract</h2>
-        <ul>
-            <li>Origin: </li>
-            <li>Year: </li>
-            <li>Plan: </li>
-        </ul>
-        </>
-     );
+    if (origin === '' || year === '' || plan === '') return null;
+
+    return (
+        <AbstractContainer>
+            <h2>Abstract Purchase</h2>
+            <ul>
+                <li>Origin: {firstCapitalltter(origin)}</li>
+                <li>Year: {year}</li>
+                <li>Plan: {firstCapitalltter(plan)}</li>
+            </ul>
+        </AbstractContainer>
+    );
 }
- 
+
 export default Abstract;

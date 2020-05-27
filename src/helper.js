@@ -27,3 +27,8 @@ export function calculateOrigin(origin) {
 export function getPlan(plan) {
     return (plan === 'basic') ? 1.20 : 1.50;
 }
+
+// show the first letter in capital letter
+export function firstCapitalltter(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
