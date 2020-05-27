@@ -51,7 +51,7 @@ const Error = styled.div`
     margin: 0 0 2rem 0;
 `;
 
-const Form = ({ setAbstract }) => {
+const Form = ({ setAbstract, setLoading }) => {
 
     const [data, setData] = useState({
         origin: '',
@@ -102,11 +102,20 @@ const Form = ({ setAbstract }) => {
         const planIncrease = getPlan(plan);
         result = parseFloat(planIncrease * result).toFixed(2);
 
-        // total
-        setAbstract({
-            list: result,
-            data
-        });
+        setLoading(true);
+
+        setTimeout(() => {
+
+            // delete the spinner
+            setLoading(false);
+
+            // show total and pass the information to the App component
+            setAbstract({
+                list: result,
+                data
+            });
+            
+        }, 3000);
     }
 
     return (

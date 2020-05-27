@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Form from './components/Form';
 import Abstract from './components/Abstract';
 import Result from './components/Result';
+import Spinner from './components/Spinner';
 
 const Container = styled.div`
   max-width: 600px;
@@ -26,6 +27,8 @@ function App() {
     }
   });
 
+  const [loading, setLoading] = useState(false);
+
   // extract data
   const { list, data } = abstract;
 
@@ -35,15 +38,20 @@ function App() {
         title='Car Insurance'
       />
       <FormContainer>
-        <Form 
+        <Form
           setAbstract={setAbstract}
+          setLoading={setLoading}
         />
-        <Abstract 
+        {loading ? <Spinner /> : null}
+        <Abstract
           data={data}
         />
-        <Result 
-          list={list}
-        />
+        {!loading
+          ? <Result
+            list={list}
+          />
+          : null}
+
       </FormContainer>
     </Container>
   );
