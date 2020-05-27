@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { getYearDifference } from '../helper';
+import { getYearDifference, calculateOrigin } from '../helper';
 
 const Field = styled.div`
     display: flex;
@@ -95,10 +95,10 @@ const Form = () => {
         console.log(result);
 
         // american 15%
-
         // european 30%
-
         // asiatic 5%
+        result = calculateOrigin(origin) * result;
+        console.log(result);
 
         // basic plan increment 20%
 
