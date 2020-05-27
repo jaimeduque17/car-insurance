@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import Header from './components/Header';
 import Form from './components/Form';
 import Abstract from './components/Abstract';
+import Result from './components/Result';
 
 const Container = styled.div`
   max-width: 600px;
@@ -26,7 +27,7 @@ function App() {
   });
 
   // extract data
-  const { data } = abstract;
+  const { list, data } = abstract;
 
   return (
     <Container>
@@ -39,6 +40,9 @@ function App() {
         />
         <Abstract 
           data={data}
+        />
+        <Result 
+          list={list}
         />
       </FormContainer>
     </Container>
