@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const Message = styled.p`
     background-color: rgb(127, 224, 237);
@@ -31,7 +32,18 @@ const Result = ({ list }) => {
         (list === 0)
             ? <Message>Choose origin, year and plan insurance</Message>
             : <ListResult>
-                <ListText>Total cost: ${list}</ListText>
+                <TransitionGroup
+                    component="p"
+                    className="result"
+                >
+                    <CSSTransition
+                        classNames="result"
+                        key={list}
+                        timeout={{ enter: 500, exit: 500 }}
+                    >
+                        <ListText>Total cost: ${list}</ListText>
+                    </CSSTransition>
+                </TransitionGroup>
             </ListResult>
     );
 }
