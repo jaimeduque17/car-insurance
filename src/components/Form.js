@@ -51,7 +51,7 @@ const Error = styled.div`
     margin: 0 0 2rem 0;
 `;
 
-const Form = () => {
+const Form = ({ setAbstract }) => {
 
     const [data, setData] = useState({
         origin: '',
@@ -103,6 +103,10 @@ const Form = () => {
         result = parseFloat(planIncrease * result).toFixed(2);
 
         // total
+        setAbstract({
+            list: result,
+            data
+        });
     }
 
     return (
