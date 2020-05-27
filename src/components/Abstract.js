@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import { firstCapitalltter } from '../helper';
 
 const AbstractContainer = styled.div`
@@ -27,6 +28,10 @@ const Abstract = ({ data }) => {
             </ul>
         </AbstractContainer>
     );
+}
+
+Abstract.propTypes = {
+    data: PropTypes.object.isRequired
 }
 
 export default Abstract;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import { getYearDifference, calculateOrigin, getPlan } from '../helper';
 
 const Field = styled.div`
@@ -111,7 +112,7 @@ const Form = ({ setAbstract, setLoading }) => {
 
             // show total and pass the information to the App component
             setAbstract({
-                list: result,
+                list: Number(result),
                 data
             });
             
@@ -176,6 +177,11 @@ const Form = ({ setAbstract, setLoading }) => {
             <Button type="submit">List</Button>
         </form>
     );
+}
+
+Form.propTypes = {
+    setAbstract: PropTypes.func.isRequired,
+    setLoading: PropTypes.func.isRequired
 }
 
 export default Form;
